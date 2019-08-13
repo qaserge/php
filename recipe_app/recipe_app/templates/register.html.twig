@@ -1,0 +1,45 @@
+{% extends "master.html.twig" %}
+
+{% block headAdd %}
+        <script>
+            $(document).ready(function() {
+                $('input[name=email]').keyup(function() {
+                    var email = $('input[name=email]').val();
+                    $('#isTaken').load("/isemailregistered/" + email);
+                });
+            });
+        </script>
+{% endblock headAdd %}
+
+{% block content %}
+
+    {% if errorList %}
+        <ul>
+            {% for error in errorList %}
+                <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h1>Register</h1><br>
+    <form method="post">
+        <div class="form-row">
+            <div class="col"> 
+                <input type="text" name="name" value="{{v.name}}" class="form-control" placeholder="Name">
+            </div>
+            <div class="col">
+                <input type="email" name="email" value="{{v.email}}" class="form-control" placeholder="Email">
+                <span class="errorMessage" id="isTaken"></span>
+            </div>
+        </div><br>
+        <div class="form-row">
+            <div class="col"> 
+                <input type="password" name="pass1" class="form-control" placeholder="Password">
+            </div>
+            <div class="col">
+                <input type="password" name="pass2" class="form-control" placeholder="Password (repeated)">
+            </div>
+        </div><br>
+        <input type="submit" value="Register" class="btn btn-primary">
+    </form>
+
+{% endblock content %}

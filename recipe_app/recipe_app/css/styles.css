@@ -1,0 +1,79 @@
+body {
+    background-color: black;
+    /*margin: 20px;*/
+    
+}
+
+.container {
+    padding-top: 15px;
+    /*display: flex;*/
+    width: 100%;
+}
+
+#centerContent {
+    margin: 0 auto;
+    padding: 50px;
+    width: 100%; /* 960px is standard */
+    background-color: white;
+}
+
+.errorMessage {
+    font-weight: bold;
+    background-color: yellow;
+    color: red;
+}
+
+#footer {
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #F0F0E9;
+}
+
+#loading
+{
+	text-align:center;
+	background: url('loader.gif') no-repeat center;
+	height: 150px;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 160px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}

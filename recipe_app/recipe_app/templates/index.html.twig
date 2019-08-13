@@ -1,0 +1,119 @@
+{% extends "master.html.twig" %}
+
+{% block title %}RECIPES{% endblock %}
+
+{% block content %}
+
+    {% if errorList %}
+        <ul>
+            {% for error in errorList %}
+                <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    
+
+    
+    <div class="container">
+        
+                
+        <div class="row">
+        	                
+                
+            <div class="col-md-3">                				
+			
+                                
+                <!--********************************************-->               
+                                
+                <div class="list-group">
+		<h3>Meal Type</h3>
+                    <div class="list-group-item checkbox">
+                        {% for m in mealtype %}
+                    <label><input type="checkbox" class="common_selector mealtype" value="{{m.mealtype}}" > {{m.mealtype}} </label>
+                        {% endfor %}	
+                        
+                    </div>
+                    	
+                </div>
+                <!--********************************************-->
+                
+                <div class="list-group">
+		<h3>Cuisine</h3>
+                    <div class="list-group-item checkbox">
+                        {% for c in cuisine %}
+                    <label><input type="checkbox" class="common_selector cuisine" value="{{c.cuisine}}" > {{c.cuisine}} </label>
+                        {% endfor %}	
+                        
+                    </div>
+                    	
+                </div>
+                <!--********************************************-->
+                
+                <div class="list-group">
+		<h3>Diet</h3>
+                    <div class="list-group-item checkbox">
+                        {% for d in diet %}
+                    <label><input type="checkbox" class="common_selector diet" value="{{d.diet}}" > {{d.diet}} </label>
+                        {% endfor %}	                        
+                    </div>                    	
+                </div>
+                <!--********************************************-->
+                
+            </div>
+                   
+                       
+            <div class="col-md-9">
+            	<br />
+                <div class="row filter_data">
+
+                </div>                
+            </div>
+                    
+        </div>
+
+    </div>
+
+<script>
+$(document).ready(function(){
+
+    filter_data();
+
+    function filter_data()
+    {
+        $('.filter_data').html('<div id="loading" style="" ></div>');
+        var action = 'fetch_data';
+        var mealtype = get_filter('mealtype');
+        var cuisine = get_filter('cuisine');
+        var diet = get_filter('diet');
+        $.ajax({
+            url:"/data.php",
+            method:"POST",
+            data:{action:action, mealtype:mealtype, cuisine:cuisine, diet:diet},
+            success:function(data){
+                $('.filter_data').html(data);
+            }
+        });
+    }
+
+    function get_filter(class_name)
+    {
+        var filter = [];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
+        });
+        return filter;
+    }
+
+    $('.common_selector').click(function(){
+        filter_data();
+    });
+
+
+
+});
+</script>
+
+   
+    
+    {% endblock content %}

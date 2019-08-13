@@ -1,0 +1,37 @@
+{# empty Twig template #}
+{% extends "master.html.twig" %}
+
+{% block title %}RecipeList{% endblock %}
+
+{% block content %}
+    <p><a class="btn btn-primary" href="/admin/recipes/add">Add new recipe</a></p>
+    
+    <table class="table table-striped">
+        <tr><th scope="col">Recipe</th><th scope="col">Description</th><th scope="col">Instruction</th><th scope="col">ingredients</th><th scope="col">imagePath</th><th scope="col">mealtype</th><th scope="col">cuisine</th><th scope="col">diet</th><th scope="col">fk_user</th><th scope="col">Actions</th></tr>
+        {% for p in list %}
+        <tr>            
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.instruction}}</td>            
+            <td>{{p.ingredients}}</td>
+            <td><img src="/{{p.imagePath}}" width="100"></td>
+            <td>{{p.mealtype}}</td>
+            <td>{{p.cuisine}}</td>
+            <td>{{p.diet}}</td>
+            <td>{{p.fk_user}}</td>
+  	
+     
+            <td>
+                <!-- method 1 - simple h-ref text link -->
+                <!-- <a href="/admin/products/edit/{{p.id}}">Edit</a> -->
+                <!-- method 2 - button with javascript -->
+                <button class="btn btn-danger" onclick="window.location='/admin/recipes/delete/{{p.id}}';">Delete</button>
+                <!-- method 3 - form with submit button -->
+                <form action="/admin/recipes/edit/{{p.id}}">
+                    <input class="btn btn-warning" type="submit" value="Edit">
+                </form>
+            </td>
+        </tr>                
+        {% endfor %}
+    </table>
+{% endblock content %}

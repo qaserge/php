@@ -1,0 +1,65 @@
+{% extends "master.html.twig" %}
+
+{% block content %}
+
+    {% if errorList %}
+        <ul>
+            {% for error in errorList %}
+                <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+        <div class="col"> 
+        Name: <input class="form-control" type="text" name="name" value="{{v.name}}"><br>
+        </div>
+        <div class="col"> 
+        Description: <textarea class="form-control" name="description">{{v.description}}</textarea><br>
+        </div>
+        </div><br>
+        
+        <div class="form-row">
+            <div class="col"> 
+        Instruction: <textarea class="form-control" name="instruction">{{v.instruction}}</textarea><br>
+        </div>
+        <div class="col">
+        Ingredients: <textarea class="form-control" name="ingredients">{{v.ingredients}}</textarea><br>  
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="col"> 
+        Meal: <select name="mealtype">
+                      <option value="Breakfast">Breakfast</option>
+                      <option value="Desserts">Desserts</option>
+                      <option value="Dinner">Dinner</option>
+                      <option value="Grilling & BBQ">Grilling & BBQ</option>
+                      <option value="Salads">Salads</option>
+                      <option value="Sandwiches">Sandwiches</option>
+        </select></div><br>
+        <div class="col">
+        Cuisine:   <select name="cuisine">
+                      <option value="Canadian">Canadian</option>
+                      <option value="Chinese">Chinese</option>
+                      <option value="French">French</option>
+                      <option value="Indian">Indian</option>
+                      <option value="Italian">Italian</option>
+                      <option value="Russian">Russian</option>
+                    </select> </div><br> 
+            <div class="col">        
+        Diet: <select name="diet">
+                      <option value="Vegan">Vegan</option>
+                      <option value="Vegetarian">Vegetarian</option>
+                      <option value="Pescatarian">Pescatarian</option>
+                      <option value="Gluten free">Gluten free</option>
+                      <option value="Lactose free">Lactose free</option>                     
+                    </select> </div><br>
+            <div class="col">        
+        <input type="file" name="recipeImage">        
+        </div><br></div>
+        <hr>
+        <input class="btn btn-success" type="submit" value="{% if v.id %}Save{% else %}Add{% endif %} Recipe">
+    </form>
+
+{% endblock content %}

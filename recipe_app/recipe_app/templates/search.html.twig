@@ -1,0 +1,27 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+    <h1>Search results:</h1>
+
+    {% if searchResult %}
+        <div class="container">   
+            {% for s in searchResult %}
+                <a href="/{{s.id}}"><h3>{{ s.name }}</h3></a>
+            <h4>Description: </h4>         
+            <p>{{s.description}}</p>
+            <h4>Instruction: </h4>             
+            <p>{{s.instruction}}</p>
+            <h4>Ingredients: </h4> 
+            <p>{{s.ingredients}}</p>
+            <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1>Data not found <a href="/">Click to continue</a></h1>
+    {% endif %}
+    
+    
+{% endblock content %}

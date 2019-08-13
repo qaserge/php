@@ -1,0 +1,58 @@
+{% extends "master.html.twig" %}
+
+{% block title %} {{ recipes.name }} {% endblock %}
+
+
+{% block content %}
+    {% if recipes %}
+        <div class="container">
+
+    <div class="row">
+      <span id="recipeID" hidden>{{recipes.ID}}</span>
+      <div class="col-lg-3">
+        <h1 class="my-4">{{ recipes.name }}</h1>
+      </div>
+<!-- /.col-lg-3 -->
+      <div class="col-lg-9">
+
+        <div class="card mt-4">
+          <img class="card-img-top img-fluid" src="/{{recipes.imagePath}}" alt="">
+          <div class="card-body">
+            <h3 class="card-title">{{ recipes.name }}</h3>
+            <h4>{{recipes.mealtype}}</h4>
+            <h4>{{recipes.cuisine}}</h4>
+            <h4>{{recipes.diet}}</h4>
+          </div>
+          <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Description
+          </div>
+          <div class="card-body">
+            <p>{{recipes.description}}</p>
+          </div>
+        </div>
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Ingredients
+          </div>
+          <div class="card-body">
+            <p>{{recipes.ingredients}}</p>
+          </div>
+        </div>
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Instructions
+          </div>
+          <div class="card-body">
+            <p>{{recipes.instruction}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+        
+    {% else %}
+        <h1>Recipe not found. <a href="\">Click to continue</a></h1>
+            {% endif %}
+{% endblock %}  

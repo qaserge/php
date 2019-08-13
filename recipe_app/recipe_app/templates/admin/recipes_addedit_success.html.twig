@@ -1,0 +1,6 @@
+{% extends "master.html.twig" %}
+
+{% block content %}
+    <p>Recipe {% if savedId %}saved{% else %}added{% endif %} successfully,
+        <a href="/admin/recipes/recipelist">click to continue</a></p>
+{% endblock %}
